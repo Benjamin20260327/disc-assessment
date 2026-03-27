@@ -1,0 +1,365 @@
+/* ========== 全局重置与基础样式 ========== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  color: #333;
+  background-color: #f5f5f5;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app-root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+/* ========== 页面容器 ========== */
+.page-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+/* ========== 首页样式 ========== */
+.home-page {
+  padding-top: 12px;
+}
+
+.home-page h1 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 28px;
+  letter-spacing: 1px;
+}
+
+.home-page .section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.home-page .section h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #4361ee;
+  display: inline-block;
+}
+
+.home-page .section p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+.home-page .section p:last-child {
+  margin-bottom: 0;
+}
+
+.home-page .section .warning {
+  color: #e74c3c;
+  font-weight: 500;
+}
+
+.home-page .section .warning strong {
+  color: #c0392b;
+}
+
+.home-page .duration {
+  text-align: center;
+  font-size: 13px;
+  color: #999;
+  margin: 20px 0 24px;
+}
+
+/* ========== 按钮通用 ========== */
+.btn-primary {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 14px 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  background: #4361ee;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  letter-spacing: 2px;
+}
+
+.btn-primary:active {
+  background: #3a56d4;
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 16px auto 0;
+  padding: 14px 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #4361ee;
+  background: #fff;
+  border: 2px solid #4361ee;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  letter-spacing: 2px;
+}
+
+.btn-secondary:active {
+  background: #f0f3ff;
+}
+
+/* ========== 答题页样式 ========== */
+.quiz-page {
+  padding-top: 8px;
+}
+
+.progress-bar {
+  background: #e8ecf1;
+  border-radius: 20px;
+  height: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.progress-bar .fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4361ee, #7209b7);
+  border-radius: 20px;
+  transition: width 0.4s ease;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 24px;
+}
+
+.progress-text span {
+  font-weight: 600;
+  color: #4361ee;
+}
+
+.question-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.question-card .q-label {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.question-card .q-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1a1a2e;
+  line-height: 1.7;
+}
+
+/* ========== 选项样式 ========== */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-item {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  border: 2px solid #e8ecf1;
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.option-item:hover {
+  border-color: #c5d0e6;
+}
+
+.option-item.selected {
+  border-color: #4361ee;
+  background: #f0f3ff;
+  box-shadow: 0 2px 8px rgba(67, 97, 238, 0.15);
+}
+
+.option-item input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.option-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 8px;
+  background: #e8ecf1;
+  color: #666;
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: 14px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.option-item.selected .option-type {
+  background: #4361ee;
+  color: #fff;
+}
+
+.option-text {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.7;
+  padding-top: 4px;
+}
+
+.option-item.selected .option-text {
+  color: #1a1a2e;
+}
+
+/* ========== 结果页样式 ========== */
+.result-page {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.result-page h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 32px;
+}
+
+.result-table-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 16px;
+  margin-bottom: 32px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  overflow-x: auto;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.result-table th {
+  padding: 12px 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  border-bottom: 2px solid #e8ecf1;
+}
+
+.result-table th.highlight {
+  color: #4361ee;
+}
+
+.result-table td {
+  padding: 16px 8px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+}
+
+.result-table td.total {
+  color: #4361ee;
+}
+
+.result-table td.dominant {
+  color: #4361ee;
+  position: relative;
+}
+
+.result-table td.dominant::after {
+  content: "★";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: 12px;
+  color: #f7b731;
+}
+
+.result-note {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 12px;
+}
+
+/* ========== 底部信息 ========== */
+.footer-info {
+  text-align: center;
+  font-size: 12px;
+  color: #bbb;
+  margin-top: 40px;
+  padding-bottom: 20px;
+}
+
+/* ========== 过渡动画 ========== */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active {
+  transition: all 0.3s ease;
+}
+
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(30px);
+}

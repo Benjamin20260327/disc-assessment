@@ -1,0 +1,869 @@
+# DISC性格测评系统 — 产品需求文档（PRD）
+
+---
+
+## 一、文档信息
+
+| 项目 | 内容 |
+|------|------|
+| 产品名称 | DISC行为风格测评系统 |
+| 版本 | V1.0 |
+| 文档状态 | 终稿 |
+| 目标用户 | 所有通过链接访问的用户（主要场景：微信群分享） |
+
+---
+
+## 二、产品概述
+
+### 2.1 产品定位
+
+一款基于Web的轻量化DISC性格测评工具，用户通过访问网页链接即可完成40道单选题，系统即时输出D、I、S、C四类行为风格的计数结果。
+
+### 2.2 使用场景
+
+高频场景为：测评链接以网页形式发布在微信群中，用户点击链接即可在手机浏览器中答题。
+
+### 2.3 核心特性
+
+- 题目与选项双重随机化，提升测评效度
+- 浏览器本地断点续答，支持中断后继续作答
+- 无后台管理，纯前端实现，部署简单
+
+---
+
+## 三、用户流程
+
+```
+用户点击链接
+    │
+    ▼
+┌──────────────┐
+│  测评说明页   │  ← 阅读简介、规则、注意事项
+│  （首页）     │
+└──────┬───────┘
+       │ 点击「开始测评」
+       ▼
+┌──────────────┐
+│   答题页      │  ← 顺序作答40道随机排列的单选题
+│  第 X / 40 题 │     支持断点续答（关闭后重新打开继续）
+└──────┬───────┘
+       │ 提交最后一题
+       ▼
+┌──────────────┐
+│  结果展示页   │  ← 展示D/I/S/C四项计数及总和
+└──────────────┘
+```
+
+---
+
+## 四、页面详细需求
+
+### 4.1 测评说明页（首页）
+
+**页面标题**：DISC行为风格测评
+
+**页面内容**（按顺序排列）：
+
+**（1）测评简介**
+
+> 每个人身上都有DISC。DISC是对常人行为风格、行为模式的总结性描述，而不是对人的描述。
+> 
+> 测评结果不是在评价人的"优缺好坏"，而是在描述一个人的特点。
+> 
+> 测评结果没有对错之分，仅作为参考和决策辅助。
+> 
+> 测评结果不是稳定不变的，它是会随着被测评人动机、工作内容、工作环境的变化而变化。
+
+**（2）答题规则**
+
+> 本测评包含40道单选题，请为每道题选择一个最符合您的选项。
+> 
+> 此测评为迫选型测评，四个选项可能存在按个人体感都不符合的情况，尽可能依据工作经历，请按第一印象最快的选择；如果不能确定，可回忆童年时的情况，或者以你最熟悉的人对你的评价来从中选择。
+
+**（3）重要提示**
+
+> 为提升测评效度，题目顺序及选项顺序均为随机生成。
+> 
+> 系统支持断点续答。作答过程中，您可以随时关闭页面，下次在同一设备、同一浏览器访问本链接时，系统将自动从您上次答题处继续，且题目与选项顺序保持不变。
+> 
+> 请注意：您的答题进度仅保存在当前使用的浏览器中。如果更换设备、更换浏览器或清除浏览器数据，进度将无法保留，请务必使用同一设备和浏览器完成测评。
+
+**（4）预计时长**：约10-15分钟
+
+**页面操作**：底部显示一个「开始测评」按钮
+
+---
+
+### 4.2 答题页
+
+**页面布局**：
+
+| 区域 | 内容 |
+|------|------|
+| 顶部 | 进度提示文字：`第 X / 40 题` |
+| 中部 | 当前题目描述（来自随机序列） |
+| 下部 | 四个单选选项，选项前标识其固有字母（D/I/S/C），选项按随机顺序排列 |
+
+**交互规则**：
+
+- 用户点击任一选项后，系统自动加载下一题，进度数字同步更新
+- 页面无需"下一题"按钮，选择即跳转
+- 最后一题（第40题）选择后，自动跳转至结果展示页
+
+---
+
+### 4.3 结果展示页
+
+**展示格式**：简洁表格，无"分"字，无类型全称
+
+| D | I | S | C | 总和 |
+|---|---|---|---|------|
+| 7 | 12 | 8 | 13 | 40 |
+
+- 第一行为表头：D、I、S、C、总和
+- 第二行为对应计数数值，根据用户实际答题结果动态填充
+- 总和恒为40
+
+**页面操作**：底部显示「重新测评」按钮，点击后清除本次所有本地存储数据，返回首页并生成新的随机序列。
+
+---
+
+## 五、题库数据
+
+### 5.1 题目结构
+
+系统内置40道题目（对应范本中的40个题组），每道题包含：
+- 题目编号（1-40）
+- 题目描述文本
+- 4个选项，每个选项对应一个DISC类型字母（D/I/S/C）
+
+### 5.2 题库完整数据
+
+| 题号 | 选项1 | 类型 | 选项2 | 类型 | 选项3 | 类型 | 选项4 | 类型 |
+|------|-------|------|-------|------|-------|------|-------|------|
+| 1 | 富于冒险：愿意面对新事物并敢于下决心掌握的人 | D | 适应力强：轻松自如适应任何环境 | S | 生动：充满活力，表情生动，多手势 | I | 善于分析：喜欢研究各部分之间的逻辑和正确的关系 | C |
+| 2 | 坚持不懈：要完成现有的事才能做新的事情 | C | 喜好娱乐：开心充满乐趣与幽默感 | I | 善于说服：用逻辑和事实而不用威严和权利服人 | D | 平和：在冲突中不受干扰，保持平静 | S |
+| 3 | 顺服：易接受他人的观点和喜好，不坚持己见 | S | 自我牺牲：为他人利益愿意放弃个人意见 | C | 善于社交：认为与人相处是好玩，而不是挑战或者商业机会 | I | 意志坚定：决心以自己的方式做事 | D |
+| 4 | 使人认同：因人格魅力或性格使人认同 | I | 体贴：关心别人的感受与需要 | C | 竞争性：把切当作竞赛，总是有强烈的赢的欲望 | D | 自控性：控制自己的情感，极少流露 | S |
+| 5 | 使人振作：给他人清新振奋的刺激 | I | 尊重他人：对人诚实尊重 | C | 善于应变：对任何情况都能作出有效的反应 | D | 含蓄：自我约束情绪与热忱 | S |
+| 6 | 生机勃勃：充满生命力与兴奋 | I | 满足：容易接受任何情况与环境 | S | 敏感：对周围的人事过分关心 | C | 自立：独立性强，只依靠自己的能力判断与才智 | D |
+| 7 | 计划者：先做详尽的计划，并严格要计划进行，不想改动 | C | 耐性：不因延误而懊恼，冷静且能容忍 | S | 积极：相信自己有转危为安的能力 | D | 推动者：动用性格魅力或鼓励别人参与 | I |
+| 8 | 肯定：自信，极少犹豫或者动摇 | D | 无拘无束：不喜欢预先计划，或者被计划牵制 | I | 羞涩：安静，不善于交谈 | S | 有时间性：生活处事依靠时间表，不喜欢计划被人干扰 | C |
+| 9 | 迁就：改变自己以与他人协调，短时间内按他人要求行事 | S | 井井有条：有系统有条理安排事情的人 | C | 坦率：毫无保留，坦率发言 | I | 乐观：令他人和自己相信任何事情都会好转 | D |
+| 10 | 强迫性：发号施令，强迫他人听从 | D | 忠诚：一贯可靠，忠心不移，有时毫无根据地奉献 | C | 有趣：风趣，幽默，把任何事物都能变成精彩的故事 | I | 友善：不主动交谈，不爱争论 | S |
+| 11 | 勇敢：敢于冒险，无所畏惧 | D | 体贴：待人得体，有耐心 | S | 注意细节：观察入微，做事情有条不紊 | C | 可爱：开心，与他人相处充满乐趣 | I |
+| 12 | 令人开心：充满活力，并将快乐传于他人 | I | 文化修养：对艺术学术特别爱好，如戏剧交响乐 | C | 自信：确信自己个人能力与成功 | D | 贯彻始终：情绪平稳，做事情坚持不懈 | S |
+| 13 | 理想主义：以自己完美的标准来设想衡量新事物 | C | 独立：自给自足，独立自信，不需要他人帮忙 | D | 无攻击性：不说或者做可能引起别人不满和反对的事情 | S | 富有激励：鼓励别人参与加入，并把每件事情变得有趣 | I |
+| 14 | 感情外露：从不掩饰情感喜好，交谈时常身不由己接触他人 | I | 深沉：深刻并常常内省，对肤浅的交谈消遣会厌恶 | C | 果断：有很快做出判断与结论的能力 | D | 幽默：语气平和而有冷静的幽默 | S |
+| 15 | 调解者：经常居中调节不同的意见，以避免双方的冲突 | S | 音乐性：爱好参与并有较深的鉴赏能力，因音乐的艺术性，而不是因为表演的乐趣 | C | 发起人：高效率的推动者，是他人的领导者，闲不住 | D | 喜交朋友：喜欢周旋聚会中，善交新朋友不把任何人当陌生人 | I |
+| 16 | 考虑周到：善解人意，帮助别人，记住特别的日子 | C | 执着：不达目的，誓不罢休 | D | 多言：不断的说话讲笑话以娱乐他人，觉得应该避免沉默而带来的尴尬 | I | 容忍：易接受别人的想法和看法，不需要反对或改变他人 | S |
+| 17 | 聆听者：愿意听别人倾诉 | S | 忠心：对自己的理想朋友工作都绝对忠实，有时甚至不需要理由 | C | 领导者：天生的领导，不相信别人的能力能比上自己 | D | 活力充沛：充满活力，精力充沛 | I |
+| 18 | 知足：满足自己拥有的，很少羡慕别人 | S | 首领：要求领导地位及别人跟随 | D | 制图者：用图表数字来组织生活，解决问题 | C | 惹人喜爱：人们注意的中心，令人喜欢 | I |
+| 19 | 完美主义者：对自己对别人都高标准，切事物有秩序 | C | 和气：易相处，易说话，易让人接近 | S | 勤劳：不停的工作，完成任务，不愿意休息 | D | 受欢迎：聚会时的灵魂人物，受欢迎的宾客 | I |
+| 20 | 跳跃性：充满活力和生气勃勃 | I | 无畏：大胆前进，不怕冒险 | D | 规范性：时时坚持自己的举止合乎认同的道德规范 | C | 平衡：稳定，走中间路线 | S |
+| 21 | 乏味：死气沉沉，缺乏生气 | S | 忸怩：躲避别人的注意力，在众人注意下不自然 | C | 露骨：好表现，华而不实，声音大 | I | 专横：喜命令支配，有时略显傲慢 | D |
+| 22 | 散漫：生活任性无秩序 | I | 无同情心：不易理解别人的问题和麻烦 | D | 缺乏热情：不易兴奋，经常感到好事难做 | S | 不宽恕：不易宽恕和忘记别人对自己的伤害，易嫉妒 | C |
+| 23 | 保留：不愿意参与，尤其是当事情复杂时 | S | 怨恨：把实际或者自己想象的别人的冒犯经常放在心中 | C | 逆反：抗拒或者拒不接受别人的方法，固执己见 | D | 唠叨：重复讲同件事情或故事，忘记已经重复多次，总是不断找话题说话 | I |
+| 24 | 挑剔：坚持琐事细节，总喜欢挑不足 | C | 胆小：经常感到强烈的担心焦虑悲戚 | S | 健忘：缺乏自我约束，导致健忘，不愿意回忆无趣的事情 | I | 率直：直言不讳，直接表达自己的想法 | D |
+| 25 | 没耐性：难以忍受等待别人 | D | 无安全感：感到担心且无自信心 | S | 优柔寡断：很难下决定 | C | 好插嘴：滔滔不绝的发言人，不是好听众，不注意别人的说话 | I |
+| 26 | 不受欢迎：由于强烈要求完美，而拒人千里 | C | 不参与：不愿意加入，不参与，对别人生活不感兴趣 | S | 难预测：时而兴奋，时而低落，或总是不兑现诺言 | I | 缺同情心：很难当众表达对弱者或者受难者的情感 | D |
+| 27 | 固执：坚持照自己的意见行事，不听不同意见 | D | 随兴：做事情没有贯性，随意做事情 | I | 难于取悦：因为要求太高而使别人很难取悦 | C | 行动迟缓：迟迟才行动，不易参与或者行动总是慢半拍 | S |
+| 28 | 平淡：平实淡漠，中间路线，无高低之分，很少表露情感 | S | 悲观：尽管期待最好但往往首先看到事物不利之处 | C | 自负：自我评价高，认为自己是最好的人选 | D | 放任：许别人做他喜欢做的事情，为的是讨好别人，令别人鼓吹自己 | I |
+| 29 | 易怒：善变，孩子性格，易激动，过后马上就忘了 | I | 无目标：不喜欢目标，也无意订目标 | S | 好争论：易与人争吵，不管对何事都觉得自己是对的 | D | 孤芳自赏：容易感到被疏离，经常没有安全感或担心别人不喜欢和自己相处 | C |
+| 30 | 天真：孩子般的单纯，不理解生命的真谛 | I | 消极：往往看到事物的消极面阴暗面，而少有积极的态度 | C | 鲁莽：充满自信有胆识但总是不恰当 | D | 冷漠：漠不关心，得过且过 | S |
+| 31 | 担忧：时时感到不确定焦虑心烦 | S | 不善交际：总喜欢挑人毛病，不被人喜欢 | C | 工作狂：为了回报或者说成就感，而不是为了完美，因而设立雄伟目标不断工作，耻于休息 | D | 喜获认同：需要旁人认同赞赏，像演员 | I |
+| 32 | 过分敏感：对事物过分反应，被人误解时感到被冒犯 | C | 不圆滑老练：经常用冒犯或考虑不周的方式表达自己 | D | 胆怯：遇到困难退缩 | S | 喋喋不休：难以自控，滔滔不绝，不能倾听别人 | I |
+| 33 | 腼腆：事事不确定，对所做的事情缺乏信心 | S | 生活紊乱：缺乏安排生活的能力 | I | 跋扈：冲动的控制事物和别人，指挥他人 | D | 抑郁：常常情绪低落 | C |
+| 34 | 缺乏毅力：反复无常，互相矛盾，情绪与行动不合逻辑 | I | 内向：活在自己的世界里，思想和兴趣放在心里 | C | 不容忍：不能忍受他人的观点态度和做事的方式 | D | 无异议：对很多事情漠不关心 | S |
+| 35 | 杂乱无章：生活环境无秩序，经常找不到东西 | I | 情绪化：情绪不易高涨，感到不被欣赏时很容易低落 | C | 喃喃自语：低声说话，不在乎说不清楚 | S | 喜操纵：精明处事，操纵事情，使对自己有利 | D |
+| 36 | 缓慢：行动思想均比较慢，过分麻烦 | S | 顽固：决心依自己的意愿行事，不易被说服 | D | 好表现：要吸引人，需要自己成为被人注意的中心 | I | 有戒心：不易相信，对语言背后的真正的动机存在疑问 | C |
+| 37 | 孤僻：需要大量的时间独处，避开人群 | C | 统治欲：毫不犹豫地表示自己的正确或控制能力 | D | 懒惰：总是先估量事情要耗费多少精力，能不做最好 | S | 大嗓门：说话声和笑声总盖过他人 | I |
+| 38 | 拖延：凡事起步慢，需要推动力 | S | 多疑：凡事怀疑，不相信别人 | C | 易怒：对行动不快或不能完成指定工作时易烦躁和发怒 | D | 不专注：无法专心致志或者集中精力 | I |
+| 39 | 报复性：记恨并惩罚冒犯自己的人 | C | 烦躁：喜新厌旧，不喜欢长时间做相同的事情 | I | 勉强：不愿意参与或者说投入 | S | 轻率：因没有耐心，不经思考，草率行动 | D |
+| 40 | 妥协：为避免矛盾即使自己是对的也不惜放弃自己的立场 | S | 好批评：不断地衡量和下判断，经常考虑提出反对意见 | C | 狡猾：精明，总是有办法达到目的 | D | 善变：像孩子般注意力短暂，需要各种变化，怕无聊 | I |
+
+> **备注**：第24题范本中选项序号存在两处"3)"的笔误，已按逻辑修正为"3)"和"4)"。
+
+---
+
+## 六、核心业务规则
+
+### 6.1 随机化规则
+
+| 维度 | 规则 |
+|------|------|
+| 题目随机 | 用户点击「开始测评」时，系统对全部40道题进行随机不重复排序，生成唯一的题目序列 |
+| 选项随机 | 对每一道题的4个选项进行随机排列，但选项前的字母标识（D/I/S/C）保持不变 |
+| 设备唯一性 | 同一设备每次进入测评，均生成新的随机题目序列和选项排列 |
+
+### 6.2 断点续答规则
+
+- 用户作答过程中可随时关闭页面
+- 再次在同一设备、同一浏览器访问时，系统自动恢复至最后一道已答题位置
+- 恢复时题目序列与选项排列与中断时完全一致
+- 更换设备、更换浏览器或清除浏览器数据后，进度丢失
+
+### 6.3 结果计算规则
+
+- 统计用户所选选项对应的D、I、S、C字母出现次数
+- 四项计数之和恒等于40
+- 结果即时展示，无需后端计算
+
+---
+
+## 七、非功能性需求
+
+| 维度 | 要求 |
+|------|------|
+| 兼容性 | 适配主流移动端浏览器（微信内置浏览器、Safari、Chrome） |
+| 加载速度 | 首屏加载时间 ≤ 2秒（4G网络环境） |
+| 数据安全 | 无用户个人信息采集，所有数据仅存于本地浏览器 |
+| 可用性 | 纯前端实现，无需后端服务器，部署至静态托管服务即可 |
+
+---
+
+## 八、附录：结果展示样式
+
+```
+┌───────┬───────┬───────┬───────┬───────┐
+│   D   │   I   │   S   │   C   │  总和  │
+├───────┼───────┼───────┼───────┼───────┤
+│   7   │  12   │   8   │  13   │  40   │
+└───────┴───────┴───────┴───────┴───────┘
+```
+
+---
+
+---
+
+# DISC性格测评系统 — 开发技术文档
+
+---
+
+## 一、技术架构
+
+### 1.1 技术选型
+
+| 层级 | 技术方案 | 说明 |
+|------|----------|------|
+| 前端框架 | Vue 3 + Vite | 轻量、响应式、开发效率高 |
+| UI框架 | 无（自定义CSS） | 测评页面结构简单，无需重型UI库 |
+| 数据存储 | 浏览器 localStorage | 纯客户端存储，无需后端 |
+| 部署方式 | 静态文件托管（Nginx / OSS / COS） | 编译后为纯静态资源 |
+
+### 1.2 系统架构图
+
+```
+┌─────────────────────────────────────────┐
+│              用户浏览器                   │
+│  ┌───────────────────────────────────┐  │
+│  │         Vue 3 前端应用             │  │
+│  │  ┌──────────┐  ┌──────────────┐  │  │
+│  │  │ 题库数据  │  │ 随机化引擎   │  │  │
+│  │  │ (内置JSON)│  │ (Fisher-Yates)│  │  │
+│  │  └──────────┘  └──────┬───────┘  │  │
+│  │                       │          │  │
+│  │  ┌────────────────────▼────────┐ │  │
+│  │  │      状态管理 (Pinia)        │ │  │
+│  │  │  - 当前题目索引              │ │  │
+│  │  │  - 随机题目序列              │ │  │
+│  │  │  - 选项排列映射              │ │  │
+│  │  │  - 用户答案                  │ │  │
+│  │  └────────────────────┬────────┘ │  │
+│  │                       │          │  │
+│  │  ┌────────────────────▼────────┐ │  │
+│  │  │    localStorage 持久化层     │ │  │
+│  │  └─────────────────────────────┘ │  │
+│  └───────────────────────────────────┘  │
+└─────────────────────────────────────────┘
+```
+
+---
+
+## 二、项目结构
+
+```
+disc-assessment/
+├── public/
+│   └── favicon.ico
+├── src/
+│   ├── assets/
+│   │   └── styles/
+│   │       └── global.css
+│   ├── data/
+│   │   └── questions.js          # 题库数据（40道题）
+│   ├── utils/
+│   │   ├── shuffle.js            # Fisher-Yates洗牌算法
+│   │   └── storage.js            # localStorage封装
+│   ├── store/
+│   │   └── quiz.js               # Pinia状态管理
+│   ├── views/
+│   │   ├── HomeView.vue          # 测评说明页（首页）
+│   │   ├── QuizView.vue          # 答题页
+│   │   └── ResultView.vue        # 结果展示页
+│   ├── router/
+│   │   └── index.js              # Vue Router路由配置
+│   ├── App.vue
+│   └── main.js
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+---
+
+## 三、核心数据结构
+
+### 3.1 题库数据（`src/data/questions.js`）
+
+```javascript
+export const questions = [
+  {
+    id: 1,
+    text: "1） 富于冒险:愿意面对新事物并敢于下决心掌握的人",
+    type: "D"
+  },
+  {
+    id: 1,
+    text: "2） 适应力强:轻松自如适应任何环境",
+    type: "S"
+  },
+  {
+    id: 1,
+    text: "3） 生动:充满活力,表情生动,多手势",
+    type: "I"
+  },
+  {
+    id: 1,
+    text: "4） 善于分析:喜欢研究各部分之间的逻辑和正确的关系",
+    type: "C"
+  },
+  // ... 共160条选项记录，按题号分组
+];
+```
+
+> **数据说明**：原始数据为160条选项记录（40题×4选项）。在实际存储中，建议按题组组织：
+
+```javascript
+export const questionBank = [
+  {
+    id: 1,
+    options: [
+      { label: "富于冒险:愿意面对新事物并敢于下决心掌握的人", type: "D" },
+      { label: "适应力强:轻松自如适应任何环境", type: "S" },
+      { label: "生动:充满活力,表情生动,多手势", type: "I" },
+      { label: "善于分析:喜欢研究各部分之间的逻辑和正确的关系", type: "C" }
+    ]
+  },
+  {
+    id: 2,
+    options: [
+      { label: "坚持不懈：要完成现有的事才能做新的事情", type: "C" },
+      { label: "喜好娱乐：开心充满乐趣与幽默感", type: "I" },
+      { label: "善于说服：用逻辑和事实而不用威严和权利服人", type: "D" },
+      { label: "平和：在冲突中不受干扰，保持平静", type: "S" }
+    ]
+  },
+  // ... 第3-40题（完整数据见PRD题库章节）
+];
+```
+
+### 3.2 localStorage 存储结构
+
+存储键名：`disc_quiz_state`
+
+```javascript
+{
+  sessionId: "disc_1711534400000",        // 唯一会话标识（时间戳前缀）
+  shuffledQuestionIds: [15, 3, 27, 8, ...], // 随机后的题目ID序列（40个）
+  optionOrders: {                          // 每道题的选项随机排列索引
+    15: [2, 0, 3, 1],                     // 题目15的选项按此索引排列
+    3: [1, 3, 0, 2],
+    // ...
+  },
+  answers: {                               // 用户答案
+    15: "D",                               // 题目15选择了类型D的选项
+    3: "S",
+    // ...
+  },
+  currentIndex: 7,                         // 当前答题进度索引（0-based）
+  completed: false                         // 是否已完成
+}
+```
+
+---
+
+## 四、核心算法
+
+### 4.1 Fisher-Yates 洗牌算法（`src/utils/shuffle.js`）
+
+```javascript
+/**
+ * Fisher-Yates 洗牌算法
+ * 对数组进行原地随机排列，保证每个排列等概率出现
+ * @param {Array} arr - 待随机排列的数组
+ * @returns {Array} - 随机排列后的数组（新数组，不修改原数组）
+ */
+export function shuffleArray(arr) {
+  const shuffled = [...arr];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+/**
+ * 生成选项排列索引
+ * @param {number} count - 选项数量（固定为4）
+ * @returns {number[]} - 随机排列的索引数组，如 [2, 0, 3, 1]
+ */
+export function generateOptionOrder(count = 4) {
+  const indices = Array.from({ length: count }, (_, i) => i);
+  return shuffleArray(indices);
+}
+```
+
+### 4.2 localStorage 封装（`src/utils/storage.js`）
+
+```javascript
+const STORAGE_KEY = 'disc_quiz_state';
+
+export function saveState(state) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (e) {
+    console.error('保存答题状态失败:', e);
+  }
+}
+
+export function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) {
+    console.error('读取答题状态失败:', e);
+    return null;
+  }
+}
+
+export function clearState() {
+  localStorage.removeItem(STORAGE_KEY);
+}
+```
+
+---
+
+## 五、状态管理（Pinia Store）
+
+### `src/store/quiz.js`
+
+```javascript
+import { defineStore } from 'pinia';
+import { questionBank } from '@/data/questions';
+import { shuffleArray, generateOptionOrder } from '@/utils/shuffle';
+import { saveState, loadState, clearState } from '@/utils/storage';
+
+export const useQuizStore = defineStore('quiz', {
+  state: () => ({
+    questionBank: questionBank,
+    shuffledQuestionIds: [],      // 随机题目ID序列
+    optionOrders: {},              // 每题选项排列索引
+    answers: {},                   // 用户答案 { questionId: type }
+    currentIndex: 0,               // 当前题目的索引
+    completed: false
+  }),
+
+  getters: {
+    // 当前题目对象
+    currentQuestion(state) {
+      if (state.currentIndex >= state.shuffledQuestionIds.length) return null;
+      const qId = state.shuffledQuestionIds[state.currentIndex];
+      return state.questionBank.find(q => q.id === qId);
+    },
+
+    // 当前题目的随机排列选项
+    currentOptions(state) {
+      const question = this.currentQuestion;
+      if (!question) return [];
+      const order = state.optionOrders[question.id] || [0, 1, 2, 3];
+      return order.map(i => question.options[i]);
+    },
+
+    // 进度百分比
+    progress(state) {
+      return `${state.currentIndex + 1} / ${state.shuffledQuestionIds.length}`;
+    },
+
+    // 计算结果
+    results(state) {
+      const counts = { D: 0, I: 0, S: 0, C: 0 };
+      Object.values(state.answers).forEach(type => {
+        if (counts.hasOwnProperty(type)) {
+          counts[type]++;
+        }
+      });
+      return counts;
+    }
+  },
+
+  actions: {
+    /**
+     * 初始化测评
+     * 尝试从localStorage恢复，若无则创建新的随机序列
+     */
+    initQuiz() {
+      const saved = loadState();
+      if (saved && !saved.completed) {
+        // 恢复之前的进度
+        this.shuffledQuestionIds = saved.shuffledQuestionIds;
+        this.optionOrders = saved.optionOrders;
+        this.answers = saved.answers;
+        this.currentIndex = saved.currentIndex;
+        this.completed = false;
+      } else {
+        // 创建新的随机序列
+        this.createNewSession();
+      }
+    },
+
+    /**
+     * 创建新的测评会话
+     */
+    createNewSession() {
+      // 1. 随机排列题目
+      const allIds = this.questionBank.map(q => q.id);
+      this.shuffledQuestionIds = shuffleArray(allIds);
+
+      // 2. 为每道题生成随机选项排列
+      this.optionOrders = {};
+      this.shuffledQuestionIds.forEach(id => {
+        this.optionOrders[id] = generateOptionOrder(4);
+      });
+
+      // 3. 重置答案和进度
+      this.answers = {};
+      this.currentIndex = 0;
+      this.completed = false;
+
+      // 4. 持久化
+      this.persist();
+    },
+
+    /**
+     * 提交当前题目的答案
+     * @param {string} type - 选择的DISC类型字母
+     */
+    submitAnswer(type) {
+      const qId = this.shuffledQuestionIds[this.currentIndex];
+      this.answers[qId] = type;
+      this.currentIndex++;
+
+      // 检查是否全部完成
+      if (this.currentIndex >= this.shuffledQuestionIds.length) {
+        this.completed = true;
+      }
+
+      this.persist();
+    },
+
+    /**
+     * 将当前状态持久化到localStorage
+     */
+    persist() {
+      saveState({
+        shuffledQuestionIds: this.shuffledQuestionIds,
+        optionOrders: this.optionOrders,
+        answers: this.answers,
+        currentIndex: this.currentIndex,
+        completed: this.completed
+      });
+    },
+
+    /**
+     * 重置测评（清除所有数据）
+     */
+    resetQuiz() {
+      clearState();
+      this.createNewSession();
+    }
+  }
+});
+```
+
+---
+
+## 六、页面组件实现
+
+### 6.1 路由配置（`src/router/index.js`）
+
+```javascript
+import { createRouter, createWebHistory } from 'vue-router';
+
+const routes = [
+  { path: '/', name: 'Home', component: () => import('@/views/HomeView.vue') },
+  { path: '/quiz', name: 'Quiz', component: () => import('@/views/QuizView.vue') },
+  { path: '/result', name: 'Result', component: () => import('@/views/ResultView.vue') }
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+});
+
+export default router;
+```
+
+### 6.2 测评说明页（`src/views/HomeView.vue`）
+
+```vue
+<template>
+  <div class="home-container">
+    <h1>DISC行为风格测评</h1>
+
+    <section class="intro">
+      <h2>测评简介</h2>
+      <p>每个人身上都有DISC。DISC是对常人行为风格、行为模式的总结性描述，而不是对人的描述。</p>
+      <p>测评结果不是在评价人的"优缺好坏"，而是在描述一个人的特点。</p>
+      <p>测评结果没有对错之分，仅作为参考和决策辅助。</p>
+      <p>测评结果不是稳定不变的，它是会随着被测评人动机、工作内容、工作环境的变化而变化。</p>
+    </section>
+
+    <section class="rules">
+      <h2>答题规则</h2>
+      <p>本测评包含40道单选题，请为每道题选择一个最符合您的选项。</p>
+      <p>此测评为迫选型测评，四个选项可能存在按个人体感都不符合的情况，尽可能依据工作经历，请按第一印象最快的选择；如果不能确定，可回忆童年时的情况，或者以你最熟悉的人对你的评价来从中选择。</p>
+    </section>
+
+    <section class="notice">
+      <h2>重要提示</h2>
+      <p>为提升测评效度，题目顺序及选项顺序均为随机生成。</p>
+      <p>系统支持断点续答。作答过程中，您可以随时关闭页面，下次在<strong>同一设备、同一浏览器</strong>访问本链接时，系统将自动从您上次答题处继续，且题目与选项顺序保持不变。</p>
+      <p class="warning">请注意：您的答题进度仅保存在当前使用的浏览器中。如果更换设备、更换浏览器或清除浏览器数据，进度将无法保留，请务必使用同一设备和浏览器完成测评。</p>
+    </section>
+
+    <p class="duration">预计时长：约10-15分钟</p>
+
+    <button class="start-btn" @click="startQuiz">开始测评</button>
+  </div>
+</template>
+
+<script setup>
+import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useQuizStore } from '@/store/quiz';
+
+const router = useRouter();
+const store = useQuizStore();
+
+onMounted(() => {
+  // 检查是否有未完成的测评
+  store.initQuiz();
+  if (store.completed) {
+    // 已完成的直接跳结果
+    router.replace('/result');
+  } else if (Object.keys(store.answers).length > 0) {
+    // 有未完成的，提示是否继续
+    if (confirm('检测到您有未完成的测评，是否继续？')) {
+      router.replace('/quiz');
+    }
+  }
+});
+
+function startQuiz() {
+  store.createNewSession();
+  router.push('/quiz');
+}
+</script>
+```
+
+### 6.3 答题页（`src/views/QuizView.vue`）
+
+```vue
+<template>
+  <div class="quiz-container" v-if="store.currentQuestion">
+    <div class="progress-bar">
+      第 {{ store.currentIndex + 1 }} / {{ store.shuffledQuestionIds.length }} 题
+    </div>
+
+    <div class="question-area">
+      <p class="question-text">{{ currentQuestionText }}</p>
+    </div>
+
+    <div class="options-area">
+      <label
+        v-for="(option, index) in store.currentOptions"
+        :key="index"
+        class="option-item"
+      >
+        <input
+          type="radio"
+          :name="'question_' + store.currentQuestion.id"
+          :value="option.type"
+          @change="selectOption(option.type)"
+        />
+        <span class="option-type">{{ option.type }}</span>
+        <span class="option-label">{{ option.label }}</span>
+      </label>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { computed, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useQuizStore } from '@/store/quiz';
+
+const router = useRouter();
+const store = useQuizStore();
+
+onMounted(() => {
+  store.initQuiz();
+  if (store.completed) {
+    router.replace('/result');
+  }
+  if (store.shuffledQuestionIds.length === 0) {
+    router.replace('/');
+  }
+});
+
+const currentQuestionText = computed(() => {
+  // 显示题目编号（按随机序列中的位置）
+  const q = store.currentQuestion;
+  if (!q) return '';
+  // 去掉原始选项前的序号，只保留描述
+  return `第${store.currentIndex + 1}题`;
+});
+
+function selectOption(type) {
+  store.submitAnswer(type);
+  if (store.completed) {
+    router.replace('/result');
+  }
+  // 否则自动显示下一题（响应式）
+}
+</script>
+```
+
+### 6.4 结果展示页（`src/views/ResultView.vue`）
+
+```vue
+<template>
+  <div class="result-container">
+    <h1>您的DISC测评结果</h1>
+
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>D</th>
+          <th>I</>C</th>
+          <th>总和</th>
+        </tr>
+      </theadth>
+          <th>S</th>
+          <th>
+      <tbody>
+        <tr>
+          <td>{{ results.D }}</td>
+          <td>{{ results.I }}</td>
+          <td>{{ results.S }}</td>
+          <td>{{ results.C }}</td>
+          <td>{{ results.D + results.I + results.S + results.C }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="restart-btn" @click="restart">重新测评</button>
+  </div>
+</template>
+
+<script setup>
+import { computed, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useQuizStore } from '@/store/quiz';
+
+const router = useRouter();
+const store = useQuizStore();
+
+onMounted(() => {
+  store.initQuiz();
+  if (!store.completed) {
+    router.replace('/quiz');
+  }
+});
+
+const results = computed(() => store.results);
+
+function restart() {
+  store.resetQuiz();
+  router.replace('/');
+}
+</script>
+```
+
+---
+
+## 七、部署方案
+
+### 7.1 构建
+
+```bash
+npm install
+npm run build
+```
+
+构建产物位于 `dist/` 目录，为纯静态文件（HTML + CSS + JS）。
+
+### 7.2 部署选项
+
+| 方案 | 适用场景 | 操作 |
+|------|----------|------|
+| **Nginx** | 自有服务器 | 将 `dist/` 内容复制到 Nginx 的 html 目录，配置 `try_files $uri $uri/ /index.html;` |
+| **阿里云OSS** | 云托管 | 开启静态网站托管，上传 `dist/` 内容，绑定自定义域名 |
+| **腾讯云COS** | 云托管 | 开启静态网站功能，上传文件，配置回源 |
+| **Vercel / Netlify** | 快速部署 | 连接Git仓库，自动构建部署 |
+
+### 7.3 Nginx 配置示例
+
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+    root /var/www/disc-assessment;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # 启用gzip压缩
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript;
+}
+```
+
+### 7.4 微信环境注意事项
+
+- 域名需已备案
+- 建议启用HTTPS（微信内置浏览器对HTTP有限制）
+- 如需在微信中正常分享，需配置 `jssdk` 的分享标题、描述和图标（可选）
+
+---
+
+## 八、完整题库数据文件
+
+`src/data/questions.js` 中需包含全部40道题的完整数据（160条选项记录），数据来源为PRD第五章"题库数据"中的表格。每道题的4个选项需完整录入，`type` 字段取值为 `"D"`、`"I"`、`"S"`、`"C"` 之一。
+
+---
+
+## 九、测试要点
+
+| 测试项 | 验证内容 |
+|--------|----------|
+| 题目随机性 | 多次点击「开始测评」，验证题目顺序不相同 |
+| 选项随机性 | 同一题目在不同会话中，选项排列顺序不相同 |
+| 断点续答 | 答题中途关闭页面，重新打开后恢复到正确位置，题目与选项顺序不变 |
+| 结果准确性 | 完成40题后，D+I+S+C=40，且与手动统计一致 |
+| 重新测评 | 点击「重新测评」后，清除旧数据，生成新的随机序列 |
+| 微信浏览器 | 在微信内置浏览器中正常打开、答题、显示结果 |
+| 移动端适配 | 在不同尺寸的手机屏幕上布局正常，选项可正常点击 |

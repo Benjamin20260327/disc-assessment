@@ -1,6 +1,7 @@
 export const questionBank = [
   {
     id: 1,
+    question: '请从以下4个选项中选出最符合您的',
     options: [
       { label: '富于冒险:愿意面对新事物并敢于下决心掌握的人', type: 'D' },
       { label: '适应力强:轻松自如适应任何环境', type: 'S' },
@@ -10,6 +11,7 @@ export const questionBank = [
   },
   {
     id: 2,
+    question: '请从以下4个选项中选出最符合您的',
     options: [
       { label: '坚持不懈：要完成现有的事才能做新的事情', type: 'C' },
       { label: '喜好娱乐：开心充满乐趣与幽默感', type: 'I' },
@@ -19,6 +21,7 @@ export const questionBank = [
   },
   {
     id: 3,
+    question: '请从以下4个选项中选出最符合您的',
     options: [
       { label: '顺服：易接受他人的观点和喜好，不坚持己见', type: 'S' },
       { label: '自我牺牲：为他人利益愿意放弃个人意见', type: 'C' },
@@ -28,6 +31,7 @@ export const questionBank = [
   },
   {
     id: 4,
+    question: '请从以下4个选项中选出最符合您的',
     options: [
       { label: '使人认同：因人格魅力或性格使人认同', type: 'I' },
       { label: '体贴：关心别人的感受与需要', type: 'C' },
@@ -37,7 +41,7 @@ export const questionBank = [
   },
   {
     id: 5,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '使人振作：给他人清新振奋的刺激', type: 'I' },
       { label: '尊重他人：对人诚实尊重', type: 'C' },
       { label: '善于应变：对任何情况都能作出有效的反应', type: 'D' },
@@ -46,7 +50,7 @@ export const questionBank = [
   },
   {
     id: 6,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '生机勃勃：充满生命力与兴奋', type: 'I' },
       { label: '满足：容易接受任何情况与环境', type: 'S' },
       { label: '敏感：对周围的人事过分关心', type: 'C' },
@@ -55,7 +59,7 @@ export const questionBank = [
   },
   {
     id: 7,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '计划者：先做详尽的计划，并严格要计划进行，不想改动', type: 'C' },
       { label: '耐性：不因延误而懊恼，冷静且能容忍', type: 'S' },
       { label: '积极：相信自己有转危为安的能力', type: 'D' },
@@ -64,7 +68,7 @@ export const questionBank = [
   },
   {
     id: 8,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '肯定：自信，极少犹豫或者动摇', type: 'D' },
       { label: '无拘无束：不喜欢预先计划，或者被计划牵制', type: 'I' },
       { label: '羞涩：安静，不善于交谈', type: 'S' },
@@ -73,7 +77,7 @@ export const questionBank = [
   },
   {
     id: 9,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '迁就：改变自己以与他人协调，短时间内按他人要求行事', type: 'S' },
       { label: '井井有条：有系统有条理安排事情的人', type: 'C' },
       { label: '坦率：毫无保留，坦率发言', type: 'I' },
@@ -82,7 +86,7 @@ export const questionBank = [
   },
   {
     id: 10,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '强迫性：发号施令，强迫他人听从', type: 'D' },
       { label: '忠诚：一贯可靠，忠心不移，有时毫无根据地奉献', type: 'C' },
       { label: '有趣：风趣，幽默，把任何事物都能变成精彩的故事', type: 'I' },
@@ -91,7 +95,7 @@ export const questionBank = [
   },
   {
     id: 11,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '勇敢：敢于冒险，无所畏惧', type: 'D' },
       { label: '体贴：待人得体，有耐心', type: 'S' },
       { label: '注意细节：观察入微，做事情有条不紊', type: 'C' },
@@ -100,7 +104,7 @@ export const questionBank = [
   },
   {
     id: 12,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '令人开心：充满活力，并将快乐传于他人', type: 'I' },
       { label: '文化修养：对艺术学术特别爱好，如戏剧交响乐', type: 'C' },
       { label: '自信：确信自己个人能力与成功', type: 'D' },
@@ -109,7 +113,7 @@ export const questionBank = [
   },
   {
     id: 13,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '理想主义：以自己完美的标准来设想衡量新事物', type: 'C' },
       { label: '独立：自给自足，独立自信，不需要他人帮忙', type: 'D' },
       { label: '无攻击性：不说或者做可能引起别人不满和反对的事情', type: 'S' },
@@ -118,7 +122,7 @@ export const questionBank = [
   },
   {
     id: 14,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '感情外露：从不掩饰情感喜好，交谈时常身不由己接触他人', type: 'I' },
       { label: '深沉：深刻并常常内省，对肤浅的交谈消遣会厌恶', type: 'C' },
       { label: '果断：有很快做出判断与结论的能力', type: 'D' },
@@ -127,7 +131,7 @@ export const questionBank = [
   },
   {
     id: 15,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '调解者：经常居中调节不同的意见，以避免双方的冲突', type: 'S' },
       { label: '音乐性：爱好参与并有较深的鉴赏能力，因音乐的艺术性，而不是因为表演的乐趣', type: 'C' },
       { label: '发起人：高效率的推动者，是他人的领导者，闲不住', type: 'D' },
@@ -136,7 +140,7 @@ export const questionBank = [
   },
   {
     id: 16,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '考虑周到：善解人意，帮助别人，记住特别的日子', type: 'C' },
       { label: '执着：不达目的，誓不罢休', type: 'D' },
       { label: '多言：不断的说话讲笑话以娱乐他人，觉得应该避免沉默而带来的尴尬', type: 'I' },
@@ -145,7 +149,7 @@ export const questionBank = [
   },
   {
     id: 17,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '聆听者：愿意听别人倾诉', type: 'S' },
       { label: '忠心：对自己的理想朋友工作都绝对忠实，有时甚至不需要理由', type: 'C' },
       { label: '领导者：天生的领导，不相信别人的能力能比上自己', type: 'D' },
@@ -154,7 +158,7 @@ export const questionBank = [
   },
   {
     id: 18,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '知足：满足自己拥有的，很少羡慕别人', type: 'S' },
       { label: '首领：要求领导地位及别人跟随', type: 'D' },
       { label: '制图者：用图表数字来组织生活，解决问题', type: 'C' },
@@ -163,7 +167,7 @@ export const questionBank = [
   },
   {
     id: 19,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '完美主义者：对自己对别人都高标准，切事物有秩序', type: 'C' },
       { label: '和气：易相处，易说话，易让人接近', type: 'S' },
       { label: '勤劳：不停的工作，完成任务，不愿意休息', type: 'D' },
@@ -172,7 +176,7 @@ export const questionBank = [
   },
   {
     id: 20,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '跳跃性：充满活力和生气勃勃', type: 'I' },
       { label: '无畏：大胆前进，不怕冒险', type: 'D' },
       { label: '规范性：时时坚持自己的举止合乎认同的道德规范', type: 'C' },
@@ -181,7 +185,7 @@ export const questionBank = [
   },
   {
     id: 21,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '乏味：死气沉沉，缺乏生气', type: 'S' },
       { label: '忸怩：躲避别人的注意力，在众人注意下不自然', type: 'C' },
       { label: '露骨：好表现，华而不实，声音大', type: 'I' },
@@ -190,7 +194,7 @@ export const questionBank = [
   },
   {
     id: 22,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '散漫：生活任性无秩序', type: 'I' },
       { label: '无同情心：不易理解别人的问题和麻烦', type: 'D' },
       { label: '缺乏热情：不易兴奋，经常感到好事难做', type: 'S' },
@@ -199,7 +203,7 @@ export const questionBank = [
   },
   {
     id: 23,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '保留：不愿意参与，尤其是当事情复杂时', type: 'S' },
       { label: '怨恨：把实际或者自己想象的别人的冒犯经常放在心中', type: 'C' },
       { label: '逆反：抗拒或者拒不接受别人的方法，固执己见', type: 'D' },
@@ -208,7 +212,7 @@ export const questionBank = [
   },
   {
     id: 24,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '挑剔：坚持琐事细节，总喜欢挑不足', type: 'C' },
       { label: '胆小：经常感到强烈的担心焦虑悲戚', type: 'S' },
       { label: '健忘：缺乏自我约束，导致健忘，不愿意回忆无趣的事情', type: 'I' },
@@ -217,7 +221,7 @@ export const questionBank = [
   },
   {
     id: 25,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '没耐性：难以忍受等待别人', type: 'D' },
       { label: '无安全感：感到担心且无自信心', type: 'S' },
       { label: '优柔寡断：很难下决定', type: 'C' },
@@ -226,7 +230,7 @@ export const questionBank = [
   },
   {
     id: 26,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '不受欢迎：由于强烈要求完美，而拒人千里', type: 'C' },
       { label: '不参与：不愿意加入，不参与，对别人生活不感兴趣', type: 'S' },
       { label: '难预测：时而兴奋，时而低落，或总是不兑现诺言', type: 'I' },
@@ -235,7 +239,7 @@ export const questionBank = [
   },
   {
     id: 27,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '固执：坚持照自己的意见行事，不听不同意见', type: 'D' },
       { label: '随兴：做事情没有贯性，随意做事情', type: 'I' },
       { label: '难于取悦：因为要求太高而使别人很难取悦', type: 'C' },
@@ -244,7 +248,7 @@ export const questionBank = [
   },
   {
     id: 28,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '平淡：平实淡漠，中间路线,无高低之分，很少表露情感', type: 'S' },
       { label: '悲观：尽管期待最好但往往首先看到事物不利之处', type: 'C' },
       { label: '自负：自我评价高，认为自己是最好的人选', type: 'D' },
@@ -253,7 +257,7 @@ export const questionBank = [
   },
   {
     id: 29,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '易怒：善变，孩子性格，易激动，过后马上就忘了', type: 'I' },
       { label: '无目标：不喜欢目标，也无意订目标', type: 'S' },
       { label: '好争论：易与人争吵，不管对何事都觉得自己是对的', type: 'D' },
@@ -262,7 +266,7 @@ export const questionBank = [
   },
   {
     id: 30,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '天真：孩子般的单纯，不理解生命的真谛', type: 'I' },
       { label: '消极：往往看到事物的消极面阴暗面，而少有积极的态度', type: 'C' },
       { label: '鲁莽：充满自信有胆识但总是不恰当', type: 'D' },
@@ -271,7 +275,7 @@ export const questionBank = [
   },
   {
     id: 31,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '担忧：时时感到不确定焦虑心烦', type: 'S' },
       { label: '不善交际:总喜欢挑人毛病，不被人喜欢', type: 'C' },
       { label: '工作狂:为了回报或者说成就感，而不是为了完美，因而设立雄伟目标不断工作，耻于休息', type: 'D' },
@@ -280,7 +284,7 @@ export const questionBank = [
   },
   {
     id: 32,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '过分敏感：对事物过分反应，被人误解时感到被冒犯', type: 'C' },
       { label: '不圆滑老练：经常用冒犯或考虑不周的方式表达自己', type: 'D' },
       { label: '胆怯：遇到困难退缩', type: 'S' },
@@ -289,7 +293,7 @@ export const questionBank = [
   },
   {
     id: 33,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '腼腆：事事不确定，对所做的事情缺乏信心', type: 'S' },
       { label: '生活紊乱：缺乏安排生活的能力', type: 'I' },
       { label: '跋扈：冲动的控制事物和别人，指挥他人', type: 'D' },
@@ -298,7 +302,7 @@ export const questionBank = [
   },
   {
     id: 34,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '缺乏毅力：反复无常，互相矛盾，情绪与行动不合逻辑', type: 'I' },
       { label: '内向：活在自己的世界里，思想和兴趣放在心里', type: 'C' },
       { label: '不容忍：不能忍受他人的观点态度和做事的方式', type: 'D' },
@@ -307,7 +311,7 @@ export const questionBank = [
   },
   {
     id: 35,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '杂乱无章：生活环境无秩序，经常找不到东西', type: 'I' },
       { label: '情绪化：情绪不易高涨，感到不被欣赏时很容易低落', type: 'C' },
       { label: '喃喃自语：低声说话，不在乎说不清楚', type: 'S' },
@@ -316,7 +320,7 @@ export const questionBank = [
   },
   {
     id: 36,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '缓慢：行动思想均比较慢，过分麻烦', type: 'S' },
       { label: '顽固：决心依自己的意愿行事，不易被说服', type: 'D' },
       { label: '好表现：要吸引人，需要自己成为被人注意的中心', type: 'I' },
@@ -325,7 +329,7 @@ export const questionBank = [
   },
   {
     id: 37,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '孤僻：需要大量的时间独处，避开人群', type: 'C' },
       { label: '统治欲：毫不犹豫地表示自己的正确或控制能力', type: 'D' },
       { label: '懒惰：总是先估量事情要耗费多少精力，能不做最好', type: 'S' },
@@ -334,7 +338,7 @@ export const questionBank = [
   },
   {
     id: 38,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '拖延：凡事起步慢，需要推动力', type: 'S' },
       { label: '多疑：凡事怀疑，不相信别人', type: 'C' },
       { label: '易怒：对行动不快或不能完成指定工作时易烦躁和发怒', type: 'D' },
@@ -343,7 +347,7 @@ export const questionBank = [
   },
   {
     id: 39,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '报复性：记恨并惩罚冒犯自己的人', type: 'C' },
       { label: '烦躁：喜新厌旧，不喜欢长时间做相同的事情', type: 'I' },
       { label: '勉强：不愿意参与或者说投入', type: 'S' },
@@ -352,7 +356,7 @@ export const questionBank = [
   },
   {
     id: 40,
-    options: [
+    question: \'请从以下4个选项中选出最符合您的\', options: [
       { label: '妥协：为避免矛盾即使自己是对的也不惜放弃自己的立场', type: 'S' },
       { label: '好批评：不断地衡量和下判断，经常考虑提出反对意见', type: 'C' },
       { label: '狡猾：精明，总是有办法达到目的', type: 'D' },

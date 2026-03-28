@@ -12,7 +12,7 @@
       <!-- 题目卡片 -->
       <div class="question-card">
         <p class="q-label">第{{ store.currentIndex + 1 }}题</p>
-        <p class="q-text">{{ store.currentQuestion.options[0].label.substring(store.currentQuestion.options[0].label.indexOf('）') + 1 || store.currentQuestion.options[0].label.indexOf(')') + 1 || 3) }}</p>
+        <p class="q-text">{{ store.currentQuestion.question }}</p>
       </div>
 
       <!-- 选项列表 -->
@@ -30,7 +30,6 @@
             v-model="selectedType"
             @change="handleSelect(option.type)"
           />
-          <span class="option-type">{{ option.type }}</span>
           <span class="option-text">{{ option.label }}</span>
         </label>
       </div>

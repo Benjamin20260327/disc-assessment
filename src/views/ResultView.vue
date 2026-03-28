@@ -26,6 +26,8 @@
     </div>
 
     <p class="result-note">★ 标记为您的主导行为风格类型</p>
+    
+    <p class="save-note"><strong>请截图保存您的测评结果</strong></p>
 
     <button class="btn-primary" @click="restart">重新测评</button>
   </div>
